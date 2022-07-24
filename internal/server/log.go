@@ -16,7 +16,7 @@ func newLog() *Log {
 
 func (c *Log) Append(record Record) (uint64, error) {
 	c.mu.Lock()
-	defer c.mu.Unloc()
+	defer c.mu.Unlock()
 	record.Offset = unit64(len(c.Records))
 	c.records = append(c.records, record)
 
